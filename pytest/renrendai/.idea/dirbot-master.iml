@@ -6,6 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="lianjinsuo" />
     <orderEntry type="module" module-name="xiaoniu88" />
+    <orderEntry type="module" module-name="webCrawler" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />

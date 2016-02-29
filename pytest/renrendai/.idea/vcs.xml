@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../xiaoniu88" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../webCrawler" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../webCrawler/webCrawler" vcs="svn" />
   </component>
 </project>

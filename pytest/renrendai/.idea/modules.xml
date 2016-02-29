@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/dirbot-master.iml" filepath="$PROJECT_DIR$/.idea/dirbot-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../lianjinsuo/.idea/lianjinsuo.iml" filepath="$PROJECT_DIR$/../../lianjinsuo/.idea/lianjinsuo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../webCrawler/.idea/webCrawler.iml" filepath="$PROJECT_DIR$/../../webCrawler/.idea/webCrawler.iml" />
       <module fileurl="file://$PROJECT_DIR$/../xiaoniu88/.idea/xiaoniu88.iml" filepath="$PROJECT_DIR$/../xiaoniu88/.idea/xiaoniu88.iml" />
     </modules>
   </component>
