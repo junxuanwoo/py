@@ -75,7 +75,7 @@ class LJSSpider(Spider):
 
         return items
 
-
+68+36+38+16+10
 
 print soup.title.string
 

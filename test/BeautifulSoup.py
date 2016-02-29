@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from bs4 import BeautifulSoup
+import re
 
 html_doc = """
 <html>
@@ -15,12 +16,17 @@ html_doc = """
             <a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
             <a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
         and they lived at the bottom of a well.</p>
-
         <p class="story">...</p>
 """
 
-soup = BeautifulSoup(html_doc)
-
-
-print soup.find_all('a')
+soup = BeautifulSoup(html_doc, "lxml")
+#print(soup.prettify)
+print soup.find_all(text="Elsie")
+print soup.a['href']
+#regex = re.compile()
+#for li in href_list:
+#    print regex.findall(li[0])
+    
+    
+#print soup.find(href="http*")
 
