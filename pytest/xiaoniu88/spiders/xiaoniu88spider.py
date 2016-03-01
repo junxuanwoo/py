@@ -1,8 +1,5 @@
 # coding=utf-8
-import re
-from string import strip
 import scrapy
-import urllib, re
 from scrapy.selector import Selector
 from scrapy.spiders import CrawlSpider
 from xiaoniu88.settings import HEADERS, COOKIES

@@ -43,6 +43,7 @@ class LJSSpider(Spider):
     ljtc_urls = getUrls("http://www.uf-club.com/borrowIndex.do?curPage=", 1, "", "加入")
     #合并2个存放产品链接的list
     start_urls = yys_urls + ljtc_urls
+    print start_urls
 
     def parse(self, response):
         sel = Selector(response)
@@ -74,17 +75,3 @@ class LJSSpider(Spider):
             # print '数据库操作异常！'
 
         return items
-
-68+36+38+16+10
-
-print soup.title.string
-
-print soup.p
-
-print soup.a
-
-print soup.find_all('a')
-
-print soup.find(id='link3')
-
-print soup.get_text()

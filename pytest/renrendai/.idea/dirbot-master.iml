@@ -7,6 +7,7 @@
     <orderEntry type="module" module-name="lianjinsuo" />
     <orderEntry type="module" module-name="xiaoniu88" />
     <orderEntry type="module" module-name="webCrawler" />
+    <orderEntry type="module" module-name="CnblogsSpider-master" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />

@@ -16,7 +16,6 @@ class RRDSpider(Spider):
     for i in range(minId, maxId):
         url = "http://www.we.com/lend/detailPage.action?loanId=%d" % (i)
         start_urls.append(url)
-
     def parse(self, response):
         sel = Selector(response)
         items = []

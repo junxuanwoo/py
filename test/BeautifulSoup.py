@@ -21,8 +21,8 @@ html_doc = """
 
 soup = BeautifulSoup(html_doc, "lxml")
 #print(soup.prettify)
-print soup.find_all(text="Elsie")
-print soup.a['href']
+#soup.find_all('Elsie').a['hfre']
+print soup.a
 #regex = re.compile()
 #for li in href_list:
 #    print regex.findall(li[0])
