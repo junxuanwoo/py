@@ -19,14 +19,36 @@ html_doc = """
         <p class="story">...</p>
 """
 
-soup = BeautifulSoup(html_doc, "lxml")
+html_doc2 = """
+<a href="/invest/a521.html" class="buy">立即投资</a>
+"""
+
+#soup = BeautifulSoup(html_doc2, "lxml")
+#soup.a['href']
 #print(soup.prettify)
-#soup.find_all('Elsie').a['hfre']
-print soup.a
 #regex = re.compile()
-#for li in href_list:
-#    print regex.findall(li[0])
-    
-    
+#for li in href_list:    
 #print soup.find(href="http*")
+#str = soup.a(text=True
+#)[0].encode("utf-8")
+#print str
+
+#newUrl = 'www.haifax.cn' + soup.a['href']
+#print newUrl
+
+#money = "￥200000.00"
+#print len(money)
+#regex = re.compile(r'^\d+\.\d+')
+#result = regex.findall(money)
+#print result[0]
+#print result
+
+
+
+a = 'aabbccaa'
+reg = re.compile(r'aa')
+bn = reg.findall(a)
+print bn
+
+
 

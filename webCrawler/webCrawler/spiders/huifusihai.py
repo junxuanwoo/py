@@ -36,5 +36,5 @@ class CTCF_Spider(Spider):
 
         values.append(item['productName'],[item['amount'], item['balance'], item['term'], item['annualRate']])
         items.append(item)
-        db.query()
+
         return items

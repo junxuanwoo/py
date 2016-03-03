@@ -4,10 +4,19 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Python 2.7.10 (C:\Python27\python.exe)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="lianjinsuo" />
-    <orderEntry type="module" module-name="xiaoniu88" />
     <orderEntry type="module" module-name="webCrawler" />
-    <orderEntry type="module" module-name="CnblogsSpider-master" />
+    <orderEntry type="module" module-name="shengcaijinrong" />
+    <orderEntry type="module" module-name="MDTX" />
+    <orderEntry type="module" module-name="KSD" />
+    <orderEntry type="module" module-name="SCJR" />
+    <orderEntry type="module" module-name="HJS" />
+    <orderEntry type="module" module-name="AXJR" />
+    <orderEntry type="module" module-name="CCLC" />
+    <orderEntry type="module" module-name="HXD" />
+    <orderEntry type="module" module-name="HTH" />
+    <orderEntry type="module" module-name="HRJR" />
+    <orderEntry type="module" module-name="GLYD" />
+    <orderEntry type="module" module-name="HFSH" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />

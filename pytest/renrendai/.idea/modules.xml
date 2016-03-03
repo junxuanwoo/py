@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../CnblogsSpider-master/.idea/CnblogsSpider-master.iml" filepath="$PROJECT_DIR$/../CnblogsSpider-master/.idea/CnblogsSpider-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../AXJR/.idea/AXJR.iml" filepath="$PROJECT_DIR$/../../AXJR/.idea/AXJR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../CCLC/.idea/CCLC.iml" filepath="$PROJECT_DIR$/../../CCLC/.idea/CCLC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../GLYD/.idea/GLYD.iml" filepath="$PROJECT_DIR$/../../GLYD/.idea/GLYD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HFSH/.idea/HFSH.iml" filepath="$PROJECT_DIR$/../../HFSH/.idea/HFSH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HJS/.idea/HJS.iml" filepath="$PROJECT_DIR$/../../HJS/.idea/HJS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HRJR/.idea/HRJR.iml" filepath="$PROJECT_DIR$/../../HRJR/.idea/HRJR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HTH/.idea/HTH.iml" filepath="$PROJECT_DIR$/../../HTH/.idea/HTH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HXD/.idea/HXD.iml" filepath="$PROJECT_DIR$/../../HXD/.idea/HXD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../KSD/.idea/KSD.iml" filepath="$PROJECT_DIR$/../../KSD/.idea/KSD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../MDTX/.idea/MDTX.iml" filepath="$PROJECT_DIR$/../../MDTX/.idea/MDTX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../test/SCJR/.idea/SCJR.iml" filepath="$PROJECT_DIR$/../../test/SCJR/.idea/SCJR.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/dirbot-master.iml" filepath="$PROJECT_DIR$/.idea/dirbot-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../lianjinsuo/.idea/lianjinsuo.iml" filepath="$PROJECT_DIR$/../../lianjinsuo/.idea/lianjinsuo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../test/shengcaijinrong/.idea/shengcaijinrong.iml" filepath="$PROJECT_DIR$/../../test/shengcaijinrong/.idea/shengcaijinrong.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../webCrawler/.idea/webCrawler.iml" filepath="$PROJECT_DIR$/../../webCrawler/.idea/webCrawler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../xiaoniu88/.idea/xiaoniu88.iml" filepath="$PROJECT_DIR$/../xiaoniu88/.idea/xiaoniu88.iml" />
     </modules>
   </component>
 </project>

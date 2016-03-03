@@ -22,7 +22,7 @@ class gscfSpider(CrawlSpider):
     objAuthInfo = None
     objInvestRecs = None
 
-    #抓取前先取到数据库中最大的产品ID(id_Max_Stock)
+    #抓取先前取到数据库中最大的产品ID(id_Max_Stock)
     def __init__(self):
         self.id_Max_Stock = self.conn.get_last_id()
 

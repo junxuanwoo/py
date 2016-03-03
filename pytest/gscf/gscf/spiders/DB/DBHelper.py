@@ -40,6 +40,40 @@ class DBConn: #单例类，只实例化一次
         self._conn.commit()
         self._cur.close()
 
+    #查询数据库是否存在本产品(以ID为唯一标识)
+    #@return: 存在:1,不存在:0
+    #@current_product_ID; 当前产品的ID
+    #@table_name: 要查询的表名
+    def find_product(self, current_product_ID, table_name):
+        sql = 'select prdid from %s;' % table_name
+        try:
+            self._cur = self._conn.cursor()
+            self._cur.execute(sql)
+            r = self._cur.fetchall()
+            self._cur.close()
+            print '3-最大的产品ID获取完毕'.encode('utf-8')
+            for i in r:
+                if (i == current_product_ID):
+                    return 0
+            return 1
+        except Exception, e:
+            print "Mysql Error %s" % e
+
+    def query(self,sql):
+        try:
+            self._cur = self._conn.cursor()
+            self._cur.execute(sql)
+            #self._cur.execute(sqlSaveBorrowerInfo,params=self.getBorrowerInfoArgs(parBorrowerInfo))
+            #self._cur.execute(sqlSaveBorrowerAuthInfo,params=self.getBorrowerAuthInfArgs(parBorrowerAuthInfo))
+            #self._cur.executemany(sqlSaveUserJoinLogs,params=self.chgUserJoinLogsFormat(parUserJoinLogs))
+            self.commit_trans()
+            print '4-数据保存完毕'.encode('utf-8')
+        except Exception,e:
+            self._conn.rollback()
+            print "5-数据保存失败，出错信息为： %s" % e
+
+
+
     #获取最大的产品ID，如果没有产品则返回0
     def get_last_id(self):
         sql = 'select IFNULL(max(prdid),0) maxid from product_info.gscf_products_list ;'
