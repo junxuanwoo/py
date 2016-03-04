@@ -13,10 +13,13 @@
     <mapping directory="$PROJECT_DIR$/../../KSD" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../../MDTX" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../../MDTX/MDTX" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../YBJR" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../ZQW" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../CnblogsSpider-master" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../gscf" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../xiaoniu88" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../../test/SCJR" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../test/mininova" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../../test/shengcaijinrong" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../../webCrawler" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../../webCrawler/webCrawler" vcs="svn" />

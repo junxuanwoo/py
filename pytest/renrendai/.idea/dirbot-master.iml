@@ -6,17 +6,17 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="webCrawler" />
     <orderEntry type="module" module-name="shengcaijinrong" />
-    <orderEntry type="module" module-name="MDTX" />
     <orderEntry type="module" module-name="KSD" />
     <orderEntry type="module" module-name="SCJR" />
     <orderEntry type="module" module-name="HJS" />
     <orderEntry type="module" module-name="AXJR" />
-    <orderEntry type="module" module-name="CCLC" />
     <orderEntry type="module" module-name="HXD" />
     <orderEntry type="module" module-name="HTH" />
     <orderEntry type="module" module-name="HRJR" />
     <orderEntry type="module" module-name="GLYD" />
-    <orderEntry type="module" module-name="HFSH" />
+    <orderEntry type="module" module-name="YBJR" />
+    <orderEntry type="module" module-name="ZQW" />
+    <orderEntry type="module" module-name="mininova" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
