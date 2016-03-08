@@ -48,7 +48,8 @@ class HJS_Spider(Spider):
         values = (item['productName'].encode("utf-8"),item['amount'],item['amountunit'].encode("utf-8"),
                    item['annualRate'],item['term'], item['termunit'].encode("utf-8"),item['balance'],item['balanceunit'].encode("utf-8"))
         items.append(item)
-        sql = 'insert into haijinsuo_product_info(productname,amount,amountunit,annualrate,term,termunit,balance,balanceunit) values( %s,%s,%s,%s,%s,%s,%s,%s)'
+        sql = 'insert into haijinsuo_product_info(productname,amount,amountunit,annualrate,term,termunit,balance,balanceunit) ' \
+              'values( %s,%s,%s,%s,%s,%s,%s,%s)'
         par = values
         prductName = "".join(item['productName'])
         a = self.conn.find_product(prductName,'haijinsuo_product_info')

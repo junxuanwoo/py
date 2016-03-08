@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../AXJR/.idea/AXJR.iml" filepath="$PROJECT_DIR$/../../AXJR/.idea/AXJR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../GLYD/.idea/GLYD.iml" filepath="$PROJECT_DIR$/../../GLYD/.idea/GLYD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HJS/.idea/HJS.iml" filepath="$PROJECT_DIR$/../../HJS/.idea/HJS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HRJR/.idea/HRJR.iml" filepath="$PROJECT_DIR$/../../HRJR/.idea/HRJR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../HXD/.idea/HXD.iml" filepath="$PROJECT_DIR$/../../HXD/.idea/HXD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../KSD/.idea/KSD.iml" filepath="$PROJECT_DIR$/../../KSD/.idea/KSD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LTZ/.idea/LTZ.iml" filepath="$PROJECT_DIR$/../../LTZ/.idea/LTZ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../YBJR/.idea/YBJR.iml" filepath="$PROJECT_DIR$/../../YBJR/.idea/YBJR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../ZQW/.idea/ZQW.iml" filepath="$PROJECT_DIR$/../../ZQW/.idea/ZQW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dirbot-master.iml" filepath="$PROJECT_DIR$/.idea/dirbot-master.iml" />
+    </modules>
+  </component>
+</project>
