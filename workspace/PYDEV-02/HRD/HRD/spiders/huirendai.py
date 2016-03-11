@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+'''
+__function__: 惠人贷
+__auth__: wjx
+__date__: 2016-03-09
+'''
+import re
+import scrapy
+from scrapy.selector import Selector
+from scrapy.spiders import Spider
+import sys
+sys.path.append("../../../../../")
+from COMMON.db import DBConn
+from COMMON.common import Common
+from COMMON.items import ProductItem
+
+class HRD_Spider(Spider):
+     #惠人贷
+    name = "HRD"
+    common = Common.get_instance()
+    conn = DBConn.get_instance()
+    allowed_domains = ["www.huirendai.com"]
+    #优选理财
+    start_urls = common.getUrls('http://www.huirendai.com/invest/list?mc=&tl=&rs=tendering&page=', 1,'', '开始理财',0)
+    print start_urls
+
+    def start_requests(self):
+        #print self.start_urls
+        for url in self.start_urls:
+            yield scrapy.Request(url, callback = self.parse_hrd, encoding='utf-8')
+
+    def parse_hrd(self, response):
+        sel = Selector(response)
+        item = ProductItem()
+
+        item['platformid'] = 'P00617'# 平台ID
+        #一个页面多个模块
+        infos = sel.xpath('//div[@class="invest-info"]/span[@class="action"]/a[not(@class)]/../../..')
+        for info in infos:
+            item['productname'] = info.xpath('.//h3/a/text()').extract()[0].strip()# 产品名称
+            item['producturl'] = 'http://www.huirendai.com{}'.format(info.xpath('.//h3/a/@href').extract()[0])
+            item['producttype'] = re.search(ur"[\u4e00-\u9fa5]+", item['productname']).group(0)# 产品类型
+            item['productid'] = re.search(r'\d+', info.xpath('.//h3/a/@href').extract()[0]).group(0).strip()# 产品ID
+            msg = info.xpath('.//div[@class="invest-info"]/span/strong/../text()').extract()
+            item['amount'] = msg[4].strip()
+            item['balance'] = msg[5].strip()
+            item['minrate'] = item['maxrate'] = msg[0].strip()
+            item['term'] = re.search(r'\d+', msg[3]).group(0).strip()
+            item['termunit'] = msg[3][-1].strip()
+            item['repaymentmethod'] = msg[6].strip()
+            item['enddate'] = item['startdate'] = ''
+
+            recv = self.conn.find_product(item['platformid'], item['productid'])
+            if recv:
+                #存在便更新余额
+                self.conn.update(item['balance'], item['platformid'], item['productid'])
+            else:
+                #不存在便插入新标
+                self.conn.insert(item)

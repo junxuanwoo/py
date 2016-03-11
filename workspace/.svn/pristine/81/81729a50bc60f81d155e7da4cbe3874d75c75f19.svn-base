@@ -1,0 +1,79 @@
+# -*- coding: utf-8 -*-
+'''
+__function__: 壹佰金融
+__auth__: wjx
+__date__: 2016-03-09
+'''
+import re
+import scrapy
+from scrapy.selector import Selector
+from scrapy.spider import Spider
+import sys
+sys.path.append("../../../../../")
+from COMMON.db import DBConn
+from COMMON.common import Common
+from COMMON.items import ProductItem
+from bs4 import BeautifulSoup
+
+class YBJR_Spider(Spider):
+    #一百金融
+    name = "YBJR"
+    allowed_domains = ["www.pp100.com"]
+    conn = DBConn.get_instance()
+    common = Common.get_instance()
+    regex = re.compile(r'\d+')
+    start_urls = common.getUrls('https://www.pp100.com/front/invest/investHome?currPage=',
+                                1,'&pageSize=&bidStatus=-1&period=0&apr=0&searchType=0', '立即投资', 0)
+    print "start_urls = ", start_urls
+
+    def start_requests(self):
+        for url in self.start_urls:
+            yield scrapy.Request(url, callback = self.parse_url, encoding = 'utf-8')
+
+    #获取短链接url拼接
+    def parse_url(self,response):
+        sel = Selector(response)
+        product_urls  = sel.xpath('//a[@class="x_investDebt_btn"]').extract() # 获取所有立即投资的a节点
+        for product_url in product_urls:
+            if len(sel.xpath('//strong[@class="x_invest_Normal"]').extract()): # 有返回值表示非新手标
+                soup = BeautifulSoup(product_url, 'lxml')
+                #print soup.a['href']
+                newUrl = 'https://www.pp100.com{}'.format(soup.a['href'])
+                yield scrapy.Request(newUrl, callback = self.parse_ybjr,
+                                     meta={'producturl': newUrl}, encoding = 'utf-8')
+
+    def parse_ybjr(self, response):
+        sel = Selector(response)
+        item = ProductItem()
+
+        #nodes  = sel.xpath('//div[@class="newZqInfo"]')
+        item['platformid'] = 'P00558'# 平台ID
+        item['producturl'] = response.meta['producturl']
+        proInfo = sel.xpath('//div[@class="xTbInfoBid_t fl"]/h2/text()').extract()[0]
+        item['productname'] = proInfo.replace(r'  ', '') # 产品名称
+        item['producttype'] = re.search(ur"[\u4e00-\u9fa5]+", proInfo).group(0)# 产品类型
+        item['productid'] = re.findall(r'\d+', item['producturl'])[1]#产品ID
+        print  '--',item['producttype'],'--',item['productid'],'--',item['productname']
+        proInfo = sel.xpath('//div[@class="xTbInfoBid_cont"]/div/p/text()').extract() # 获取3个信息
+        item['amount'] = proInfo[0].split('.')[0].replace(',', '')# 标的总额(元)
+        item['maxrate'] = proInfo[1].strip().replace(r'%','')# 最大收益率(%)
+        item['minrate'] = item['maxrate']# 最小收益率(%)
+        item['term'] = proInfo[2] # 还款期限
+        balance = sel.xpath('//div[@class="operate_cash xTb_cash"]/p/i/text()')[0].extract() #标的余额(元)
+        item['balance'] = balance.split(r'.')[0].replace(r',', '')
+        item['startdate'] = '' # 产品发标时间
+        item['enddate'] = ''# 产品结标时间
+        proInfo = sel.xpath('//div[@class="xTbInfoBid_cont"]/div/p/i/text()').extract()
+        item['termunit'] = proInfo[0][-1]# 还款期限单位
+        proInfo = sel.xpath('//div[@class="xTbInfoBid_word"]/div/p/text()').extract()
+        item['repaymentmethod'] = str(proInfo[1]).replace(r'：', '') # 还款方式
+        #print item['platformid'],item['producturl'],item['productid'],item['productname'],item['producttype'],\
+        #    item['amount'],item['balance'],item['term'],item['maxrate'],item['termunit'],item['repaymentmethod']
+
+        recv = self.conn.find_product(item['platformid'], item['productid'])
+        if recv:
+            # 存在便更新余额
+            self.conn.update(item['balance'], item['platformid'], item['productid'])
+        else:
+            # 不存在便插入新标
+            self.conn.insert(item)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../CrawlerSystem/crawler" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../AXDL" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../CGTZ" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../DRW" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../HRD" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../SCD" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../WTLC" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../WXLC" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../ZCW" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../ZQW" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../workspace" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../workspace" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../workspace/PYDEV-02/HRD" vcs="svn" />
+  </component>
+</project>

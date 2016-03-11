@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+'''
+__function__: 可溯贷
+__auth__: wjx
+__date__: 2016-03-09
+'''
+import re
+import scrapy
+from scrapy.selector import Selector
+from scrapy.spiders import Spider
+import sys
+sys.path.append("../../../../../")
+from COMMON.db import DBConn
+from COMMON.common import Common
+from COMMON.items import ProductItem
+from bs4 import BeautifulSoup
+
+class KSD_Spider(Spider):
+    # 可溯贷
+    name = "KSD"
+    allowed_domains = ["dai.kesucorp.com"]
+    conn = DBConn.get_instance()
+    common = Common.get_instance()
+    start_urls = common.getUrls('https://dai.kesucorp.com/project/list?&page=', 1, '', '立即投资', 0)
+    #print "start_urls = ", start_urls
+
+    def parse(self, response):
+        sel = Selector(response)
+        # 获取当前列表页中所有在售新标的url跳转链接
+        product_urls = sel.xpath('//div/a[@class="btn_d btn_href"]').extract()
+        for product_url in product_urls:
+            soup = BeautifulSoup(product_url, 'lxml')
+            newUrl = soup.a['href']
+            yield scrapy.Request(newUrl, callback=self.parse_ksd, meta={'producturl': newUrl}, encoding='utf-8')
+
+    def parse_ksd(self, response):
+        sel = Selector(response)
+        item = ProductItem()
+
+        item['platformid'] = 'P00518' #平台ID
+        item['producturl'] = response.meta['producturl'] #产品URL
+        item['productid'] = re.search(r'\d+',item['producturl']).group(0) # 产品ID
+        item['productname'] = sel.xpath('//div[@class="t_d_c_topbar"]/text()').extract()[0]  # 产品名称'
+        item['producttype'] = re.search(ur"[\u4e00-\u9fa5]+", item['productname']).group(0) # 产品类型
+        total = sel.xpath('//li[@class="t_c_topbar_detail t_c_topbar_detail_last"]/span/text()')[
+            0].extract()  # 标的总额(万元)
+        item['amount'] = int(total) * 10000
+        item['balance'] = sel.xpath('//div[@class="tip_d_t_topbar"]/span/text()')[0].extract()  # 可投金额(元)
+        item['term'] = sel.xpath('//li[@class="t_c_topbar_detail"]/span/text()')[0].extract()  # 期限(月)
+        item['minrate'] = item['maxrate'] = sel.xpath('//li[@class="t_c_topbar_detail"]/span/text()')[1].extract()  # 年利率(%)
+        #TODO:期限单位通过分析直接取'月'
+        item['termunit'] = '月'
+        item['startdate'] = item['enddate'] = ''
+        item['repaymentmethod'] = sel.xpath('//ul/li/i[@class="fa fa-info-circle"]/../text()').extract()[0]\
+            .replace('还款方式：', '')
+        #print item['platformid'],item['producturl'],item['productid'],item['productname'],item['producttype'],\
+        #    item['amount'],item['balance'],item['term'],item['maxrate'],item['termunit'],item['repaymentmethod']
+        recv = self.conn.find_product(item['platformid'], item['productid'])
+        if recv:
+            # 存在便更新余额
+            self.conn.update(item['balance'], item['platformid'], item['productid'])
+        else:
+            # 不存在便插入新标
+            self.conn.insert(item)

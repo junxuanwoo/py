@@ -1,0 +1,24 @@
+﻿#
+# 文件编码调整为UTF8 Alex 20160310
+#
+DROP TABLE IF EXISTS `newbid_product_info`;
+CREATE TABLE `newbid_product_info`(
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `platformid` varchar(100) DEFAULT NULL COMMENT '平台ID',
+  `producttype` varchar(100) DEFAULT NULL COMMENT '产品类型',
+  `productname` varchar(100) DEFAULT NULL COMMENT '产品名称',
+  `producturl` varchar(100) DEFAULT NULL COMMENT '产品URL',
+  `productid` varchar(100) DEFAULT NULL COMMENT '产品ID',
+  `amount` varchar(100) DEFAULT NULL COMMENT '标的总额(元)',
+  `balance` varchar(100) DEFAULT NULL COMMENT '标的余额(元)',
+  `maxrate` varchar(100) DEFAULT NULL COMMENT '最大收益率(%)',
+  `minrate` varchar(100) DEFAULT NULL COMMENT '最小收益率(%)',
+  `startdate` varchar(100) DEFAULT NULL COMMENT '发标时间',
+  `enddate` varchar(100) DEFAULT NULL COMMENT '结标时间',
+  `term` varchar(100) DEFAULT NULL COMMENT '还款期限',
+  `termunit` varchar(100) DEFAULT NULL COMMENT '还款期限单位',
+  `repaymentmethod` varchar(100) DEFAULT NULL COMMENT '还款方式',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '产品信息入库时间',
+  PRIMARY KEY (`id`)
+
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='新标产品信息';
